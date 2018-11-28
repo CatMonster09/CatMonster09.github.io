@@ -2,51 +2,325 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Coding</title>
+        <title>CatMonster09</title>
         <style>
-            .mono {
-                font-family: mono;
+            #circle {
+                position: absolute;
+                background-color: rgb(224, 163, 40);
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                margin-top: 13px;
             }
-            body {
-                font-family: sans-serif;
-                margin-left: 15px;
+            #ear1 {
+                position: absolute;
+                background-color: rgb(201, 146, 36);
+                border-radius: 26%;
+                width: 17px;
+                height: 13px;
+                margin-top: 1px;
+                margin-left: -3px;
             }
-            .intro {
-                color: rgb(0, 186, 0);
-                font-weight: bold;
+            #ear2 {
+                position: absolute;
+                background-color: rgb(201, 146, 36);
+                border-radius: 26%;
+                width: 17px;
+                height: 13px;
+                margin-top: 1px;
+                margin-left: 36px;
             }
-            .green {
-                background-color: rgb(61, 255, 122);
-                border: double rgb(62, 214, 133) 6px;
-                padding: 5px;
-                color: rgb(255, 255, 255);
-                font-size: 22px;
-                font-weight: bold; 
+            #ear3 {
+                position: absolute;
+                background-color: rgb(201, 146, 36);
+                border-radius: 26%;
+                width: 13px;
+                height: 13px;
+                margin-top: -4px;
+                margin-left: -1px;
             }
-            .small {
-                font-size: 17px;
+            #ear4 {
+                position: absolute;
+                background-color: rgb(201, 146, 36);
+                border-radius: 26%;
+                width: 13px;
+                height: 13px;
+                margin-top: -4px;
+                margin-left: 38px;
             }
+            #nose1 {
+                position: absolute;
+                background-color: rgb(235, 110, 94);
+                border-radius: 20%;
+                width: 8px;
+                height: 9px;
+                margin-left: 21px;
+                margin-top: 20px;
+            }
+            #nose2 {
+                position: absolute;
+                background-color: rgb(235, 110, 94);
+                border-radius: 20%;
+                width: 4px;
+                height: 7px;
+                margin-left: 23px;
+                margin-top: 26px;
+            }
+            #eye1 {
+                position: absolute;
+                background-color: rgb(115, 22, 11);
+                border-radius: 27%;
+                width: 12px;
+                height: 7px;
+                margin-left: 8px;
+                margin-top: 12px;
+            }
+             #eye2 {
+                position: absolute;
+                background-color: rgb(115, 22, 11);
+                border-radius: 27%;
+                width: 12px;
+                height: 7px;
+                margin-left: 30px;
+                margin-top: 12px;
+            }
+            #mouth1 {
+                position: absolute;
+                background-color: rgb(48, 37, 36);
+                border-radius: 27%;
+                width: 18px;
+                height: 7px;
+                margin-left: 16px;
+                margin-top: 33px;
+            }
+            #mouth2 {
+                position: absolute;
+                background-color: rgb(48, 37, 36);
+                border-radius: 27%;
+                width: 22px;
+                height: 7px;
+                margin-left: 14px;
+                margin-top: 36px;
+            }
+            #whisker1 {
+                position: absolute;
+                background-color: rgb(48, 37, 36);
+                border-radius: 92%;
+                width: 22px;
+                height: 2px;
+                margin-left: 34px;
+                margin-top: 23px;
+            }
+            #whisker2 {
+                position: absolute;
+                background-color: rgb(48, 37, 36);
+                border-radius: 92%;
+                width: 22px;
+                height: 2px;
+                margin-left: -6px;
+                margin-top: 23px;
+            }
+            #whisker3 {
+                position: absolute;
+                background-color: rgb(48, 37, 36);
+                border-radius: 92%;
+                width: 22px;
+                height: 2px;
+                margin-left: -6px;
+                margin-top: 28px;
+            }
+            #whisker4 {
+                position: absolute;
+                background-color: rgb(48, 37, 36);
+                border-radius: 92%;
+                width: 22px;
+                height: 2px;
+                margin-left: 34px;
+                margin-top: 28px;
+            }
+            #whisker5 {
+                position: absolute;
+                background-color: rgb(48, 37, 36);
+                border-radius: 92%;
+                width: 13px;
+                height: 2px;
+                margin-left: 38px;
+                margin-top: 33px;
+            }
+            #whisker6 {
+                position: absolute;
+                background-color: rgb(48, 37, 36);
+                border-radius: 92%;
+                width: 13px;
+                height: 2px;
+                margin-left: -1px;
+                margin-top: 33px;
+            }
+            
+            #r {
+                margin-top: 70px;
+                font-size: 20px;
+                margin-left: 180px;
+            }
+            #l {
+                margin-top: 70px;
+                font-size: 20px;
+                margin-left: 20px;
+            }
+            #restart {
+                margin-top: 18px;
+                font-size: 20px;
+                margin-left: 140px;
+            }
+            
+            #enemy {
+                position: absolute;
+                background-color: rgb(199, 85, 62);
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+            }
+            
             #title {
-                background-color: rgb(61, 255, 122);
-                border: double rgb(62, 214, 133) 6px;
-                padding: 5px;
-                color: rgb(255, 255, 255);
+                margin-left: 215px;
+                font-weight: bold;
+                font-family: arial;
+                color: rgb(179, 122, 61);
+            }
+            
+            body {
+                text-align: center;
+            }
+            p {
+                font-size: 25px;
+                margin-top: 10px;
+                margin-left: 140px;
             }
         </style>
     </head>
     <body>
-    <h1 id="title">Coding</h1>
-    <h3>Contents:</h3>
-    <li> <a href="#introduction">Introduction</a></li>
-    <li> <a href="#Programming-Languages">Programming Languages</a></li>
-    <li> <a href="#importance-of-coding">Why is Coding Important</a></li>
-    <h2 id="introduction"> Introduction</h2>
-    <p><span class="intro mono">My Passion Project is about coding.</span> Coding is a language that both humans <em>and</em> computers can understand. You have to follow syntax rules and put together the right symbols in the correct order to tell the computer what you want it to do. Coding is used to make software, apps, and websites... like this one!</p>
-    <p class="green">
-    <span id="Programming-Languages">Programming Languages</span><br>
-    <span class="small">There are many programming languages in the world. Scratch is a programming language that helps kids understand and visualize how to code. It uses blocks instead of syntax. HTML (Hypertext Markup Language) is a programming language that is used for making documents made up of a bunch of tags. CSS (Cascading Style Sheets) is used for styling your webpage and making it look unique and original. JS (Java Script) makes a webpage interactive for the user. Including games and animations. These are just some of the many programming languages that you can use to code.</span>
-    </p>
-    <h2 id="importance-of-coding">Why Coding is Important</h2>
-    <p><span class="intro mono">If you know how to code it can help with creativity.</span> It strengthens the ability to focus on small detail and adds to your problem solving skills. You can develop websites, video games, software, or anything that your imagination can take you to with coding.  Many jobs require computer programming. <strong style="color: rgb(14, 89, 23);">Start learning now!</strong></p>
+        
+        <!-- this makes the cat monster-->
+        
+        <span id="circle">
+        <div id="ear1"></div>
+        <div id="ear2"></div>
+        <div id="ear3"></div>
+        <div id="ear4"></div>
+        <div id="nose1"></div>
+        <div id="nose2"></div>
+        <div id="eye1"></div>
+        <div id="eye2"></div>
+        <div id="mouth1"></div>
+        <div id="mouth2"></div>
+        <div id="whisker1"></div>
+        <div id="whisker2"></div>
+        <div id="whisker3"></div>
+        <div id="whisker4"></div>
+        <div id="whisker5"></div>
+        <div id="whisker6"></div>
+        </span>
+        
+        <!--- this makes the title-->
+        
+        <p id="title">Cat Monster 09</p>
+        
+        <!--- this makes the buttons-->
+        
+        <button id="r">left</button>
+        <button id="l">right</button>
+        <button id="restart">Restart</button>
+        
+        <!-- this makes the score-->
+        
+        <p>score: <span id="score">0</span></p>
+        
+        <!-- this makes the enemies-->
+        
+        <div id="enemy"></div>
+        
     </body>
+    
+    <script>
+    
+    // score (make it count up)
+    
+        var score = document.getElementById("score");
+        
+        var countUp = function() {
+                score.textContent = parseFloat(score.textContent) + 1;
+            };
+        var count = window.setInterval(countUp, 1000);
+        
+    // score (make it restart)
+    
+        var restart = document.getElementById("restart");
+        
+        var reset = function() {
+            score.textContent = "0";
+        }
+        restart.addEventListener("click", reset);
+        
+    // player movement
+        
+        var pos = 1;
+        var circle = document.getElementById("circle");
+        circle.style.left = 50 + "px"
+        var r = document.getElementById("r");
+        var l = document.getElementById("l");
+        
+        var moveR = function() {
+            circle.style.left = 50 + "px";
+            pos = 1;
+        }
+        
+        var moveL = function() {
+            circle.style.left = 200 + "px"
+            pos = 2;
+        }
+        
+        l.addEventListener("click", moveL);
+        r.addEventListener("click", moveR);
+        
+        // enemies
+        
+        var enemy = document.getElementById("enemy");
+        enemy.style.left = 55 + "px"
+        var ePos = 300;
+        var eX = Math.floor(Math.random() * 2) + 1;
+        var num = eX
+        
+        var moveUp = function() {
+            if (ePos === 10 && pos === 1 && num === 1) {
+                reset();
+            }
+            if (ePos === 10 && pos === 2 && num === 2) {
+                reset();
+            }
+            
+            if (ePos < 10) {
+                eX = Math.floor(Math.random() * 2) + 1;
+                ePos = 300;
+                if (eX === 1) {
+                    num = 1;
+                    enemy.style.left = 55 + "px";
+                    
+                }
+                if (eX === 2) {
+                    num = 2;
+                    enemy.style.left = 200 + "px";
+                }
+                
+            }
+            
+            ePos = ePos - 1;
+            enemy.style.top = ePos + "px"
+            };
+            
+        var eMove = window.setInterval(moveUp, 1);
+        
+        // effects
+        
+        
+    </script>
 </html>
