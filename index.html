@@ -188,6 +188,34 @@
                 color: rgb(179, 122, 61);
             }
             
+            #effects {
+                background-color: rgb(247, 239, 247);
+                position: absolute;
+                width: 259px;
+                height: 40px;
+                border-radius: 10px;
+                border: double rgb(255, 255, 255);
+                z-index: -5;
+            }
+            #effects2 {
+                background-color: rgb(247, 239, 247);
+                position: absolute;
+                width: 259px;
+                height: 40px;
+                border-radius: 10px;
+                border: double rgb(255, 255, 255);
+                z-index: -6;
+            }
+            #effects3 {
+                background-color: rgb(247, 239, 247);
+                position: absolute;
+                width: 259px;
+                height: 40px;
+                border-radius: 10px;
+                border: double rgb(255, 255, 255);
+                z-index: -6;
+            }
+            
             body {
                 text-align: center;
             }
@@ -238,6 +266,12 @@
         <!-- this makes the enemies-->
         
         <div id="enemy"></div>
+        
+        <!-- this makes the background effects-->
+        
+        <div id="effects"></div>
+        <div id="effects2"></div>
+        <div id="effects3"></div>
         
     </body>
     
@@ -321,6 +355,37 @@
         
         // effects
         
+        var rect = document.getElementById("effects");
+        var rect2 = document.getElementById("effects2");
+        var rect3 = document.getElementById("effects3");
+        var bPos = 300;
+        var bPos2 = 100;
+        var bPos3 = 200;
         
+        var backgroundUp = function() {
+            if (bPos < 0) {
+                bPos = 300;
+            }
+            bPos = bPos - 0.5;
+            rect.style.top = bPos + "px"
+        }
+        var backgroundUp2 = function() {
+            if (bPos2 < 0) {
+                bPos2 = 300;
+            }
+            bPos2 = bPos2 - 0.5;
+            rect2.style.top = bPos2 + "px"
+        }
+        var backgroundUp3 = function() {
+            if (bPos3 < 0) {
+                bPos3 = 300;
+            }
+            bPos3 = bPos3 - 0.5;
+            rect3.style.top = bPos3 + "px"
+        }
+        
+        var bMove = window.setInterval(backgroundUp, 1);
+        var bMove2 = window.setInterval(backgroundUp2, 1);
+        var bMove3 = window.setInterval(backgroundUp3, 1);
     </script>
 </html>
