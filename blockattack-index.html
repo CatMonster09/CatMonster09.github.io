@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Block Attack</title>
+        <style>
+            #space {
+                background-color: transparent;
+                width: 0px;
+                height: 50px;
+                position: relative;
+            }
+            #body {
+                background-color: #ffff66;
+                width: 50px;
+                height: 50px;
+                border: solid #e6e600;
+                border-radius: 20%;
+                position: relative;
+            }
+            #eye {
+                background-color: black;
+                width: 10px;
+                height: 10px;
+                border: solid white;
+                border-radius: 50%;
+                margin-top: -43px;
+                margin-left: 32px;
+                position: relative;
+            }
+            #mouth {
+                background-color: #b3b300;
+                width: 22px;
+                height: 5px;
+                border-radius: 25%;
+                margin-top: 7px;
+                margin-left: 34px;
+                position: relative;
+            }
+            #body2 {
+                background-color: gray;
+                width: 50px;
+                height: 50px;
+                border: solid rgb(99, 99, 99);
+                border-radius: 20%;
+                position: relative;
+            }
+            #eye2 {
+                background-color: black;
+                width: 10px;
+                height: 10px;
+                border: solid white;
+                border-radius: 50%;
+                margin-top: -43px;
+                margin-left: 8px;
+                position: relative;
+            }
+            #mouth2 {
+                background-color: black;
+                width: 22px;
+                height: 5px;
+                border-radius: 25%;
+                margin-top: 7px;
+                margin-left: 0px;
+                position: relative;
+            }
+            #ground {
+                background-image: linear-gradient(#99e600, transparent);
+                width: 367px;
+                height: 75px;
+                margin-top: 14px;
+                margin-left: -5px;
+                position: relative;
+            }
+            #enemy-block {
+                margin-top: -41px;
+                margin-left: 300px;
+                position: absolute;
+            }
+            .hp {
+                font-family: Comic Sans MS;
+                color: #660000;
+                background-color: #b35900;
+                border: solid #663300;
+                border-radius: 5%;
+                position: absolute;
+                padding-right: 3px;
+                box-shadow: 0px 1px 3px black;
+                margin-top: -68px;
+            }
+            #pts {
+                font-family: Comic Sans MS;
+                color: #0d260d;
+                background-color: #b35900;
+                border: solid #663300;
+                border-radius: 5%;
+                position: absolute;
+                box-shadow: 0px 1px 3px black;
+                margin-top: -68px;
+                margin-left: 60px;
+            }
+            .attack {
+                font-family: Comic Sans MS;
+                color: #331a00;
+                background-color: #b35900;
+                border: solid #663300;
+                border-radius: 5%;
+                position: absolute;
+                box-shadow: 0px 1px 3px black;
+                transition: 0.2s;
+            }
+            .attack:hover {
+                cursor: pointer;
+                background-color: #cc6900;
+            }
+            .pack {
+                font-family: Comic Sans MS;
+                color: #b35900;
+                background-color: #4d2600;
+                border: solid #331a00;
+                border-radius: 5%;
+                position: absolute;
+                box-shadow: 0px 1px 3px black;
+                transition: 0.2s;
+                margin-top: 65px;
+            }
+            .pack:hover {
+                cursor: pointer;
+                background-color: #663300;
+            }
+            #packs-left {
+                margin-left: 44px;
+                margin-top: 74px;
+                font-family: Comic Sans MS;
+            }
+            #coins {
+                font-family: Comic Sans MS;
+                color: #cc9900;
+                background-color: #b35900;
+                border: solid #663300;
+                border-radius: 5%;
+                position: absolute;
+                box-shadow: 0px 1px 3px black;
+                margin-top: -68px;
+                margin-left: 144px;
+            }
+            #buy {
+                font-family: Comic Sans MS;
+                font-size: 9px;
+                color: #b35900;
+                background-color: #ffcc33;
+                border: solid 2px#e6ac00;
+                border-radius: 5%;
+                position: absolute;
+                box-shadow: 0px 1px 3px black;
+                transition: 0.2s;
+                margin-top: -17px;
+            }
+            #buy:hover {
+                cursor: pointer;
+            }
+            #zaps-left {
+                margin-left: 115px;
+                margin-top: -40px;
+                font-family: Comic Sans MS;
+            }
+            #buy2 {
+                font-family: Comic Sans MS;
+                font-size: 9px;
+                color: #b35900;
+                background-color: #ffcc33;
+                border: solid 2px#e6ac00;
+                border-radius: 5%;
+                position: absolute;
+                box-shadow: 0px 1px 3px black;
+                transition: 0.2s;
+                margin-top: -17px;
+            }
+            #buy2:hover {
+                cursor: pointer;
+            }
+            #handbook {
+                background-color: #ffdd99;
+                color: #804000;
+                border: #804000 double;
+                border-radius: 5px;
+                padding:5px;
+                width: 180px;
+                height: 300px;
+                margin: 3px;
+                box-shadow: 0px 1px 2px black;
+                overflow: auto;
+                font-family: Comic Sans MS;
+                position: absolute;
+                margin-left: 380px;
+            }
+            #zaps-left-h {
+                margin-left: 185px;
+                margin-top: -40px;
+                font-family: Comic Sans MS;
+            }
+            #buy3 {
+                font-family: Comic Sans MS;
+                font-size: 9px;
+                color: #b35900;
+                background-color: #ffcc33;
+                border: solid 2px#e6ac00;
+                border-radius: 5%;
+                position: absolute;
+                box-shadow: 0px 1px 3px black;
+                transition: 0.2s;
+                margin-top: -17px;
+            }
+            #buy3:hover {
+                cursor: pointer;
+            }
+            #icon {
+                background-color: teal;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                margin-top: -13px;
+                border-radius: 10px;
+            }
+            #icon-2 {
+                background-color: rgb(114, 163, 242);
+                width: 7px;
+                height: 5px;
+                position: absolute;
+                margin-top: -11px;
+                margin-left: 11px;
+                border-radius: 10px;
+            }
+            #buy4 {
+                font-family: Comic Sans MS;
+                font-size: 9px;
+                color: #b35900;
+                background-color: #ffcc33;
+                border: solid 2px#e6ac00;
+                border-radius: 5%;
+                position: absolute;
+                box-shadow: 0px 1px 3px black;
+                transition: 0.2s;
+                margin-top: -16px;
+            }
+            #buy4:hover {
+                cursor: pointer;
+            }
+            #e-left {
+                margin-left: 250px;
+                margin-top: -40px;
+                font-family: Comic Sans MS;
+            }
+            #r-left {
+                margin-left: 320px;
+                margin-top: -40px;
+                font-family: Comic Sans MS;
+            }
+            #buy5 {
+                font-family: Comic Sans MS;
+                font-size: 9px;
+                color: #b35900;
+                background-color: #ffcc33;
+                border: solid 2px#e6ac00;
+                border-radius: 5%;
+                position: absolute;
+                box-shadow: 0px 1px 3px black;
+                transition: 0.2s;
+                margin-top: -16px;
+            }
+            #buy5:hover {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="handbook">
+            <h1>Handbook</h1>
+            <h3>Attacks:</h3>
+            <h4>Tackle</h4>
+            <p><strong>effect: </strong>20 damage to enemy<br>
+            <strong>cost: </strong>none</p>
+            <h4>Drain</h4>
+            <p><strong>effect: </strong>10 damage to enemy + restores 10 of your health<br>
+            <strong>cost: </strong>1 energy</p>
+            <h4>Ground Pound</h4>
+            <p><strong>effect: </strong>50 damage to enemy<br>
+            <strong>cost: </strong>3 energy</p>
+            <h4>Gaurd</h4>
+            <p><strong>effect: </strong>restores 10 of your health + opponent's next attack does nothing<br>
+            <strong>cost: </strong>3 energy</p>
+            <h4>Confuse</h4>
+            <p><strong>effect: </strong>enemy hits itself with next attack <br>
+            <strong>cost: </strong>4 energy</p>
+            <h3>Bonuses:</h3>
+            <h4>+40 HP</h4>
+            <p><strong>effect: </strong>restores 40 of your health<br>
+            <strong>cost: </strong>10 coins</p>
+            <h4>Zap(D)</h4>
+            <p><strong>effect: </strong>shoots 3 zaps. Each zap does 20 damage. Any of the zaps could hit you or your opponent.<br>
+            <strong>cost: </strong>20 coins</p>
+            <h4>Zap(H)</h4>
+            <p><strong>effect: </strong>shoots 3 zaps. Each zap heals 20 damage. Any of the zaps could hit you or your opponent.<br>
+            <strong>cost: </strong>20 coins</p>
+            <h4>Energy</h4>
+            <p><strong>effect: </strong>Gives you 3 energy<br>
+            <strong>cost: </strong>20 coins</p>
+            <h4>Restore</h4>
+            <p><strong>effect: </strong>If your health is less than 100 it restores it to 100, otherwise it heals 20<br>
+            <strong>cost: </strong>20 coins</p>
+        </div>
+    
+        <div id="space"></div>
+        <span id="your-block"><div id="body"></div><div id="eye"></div><div id="mouth"></div></span>
+        <span id="enemy-block"><div id="body2"></div><div id="eye2"></div><div id="mouth2"></div></span>
+        <div id="ground"></div>
+        <h2 class="hp" id="your-hp">100</h2>
+        <h2 class="hp" id="enemy-hp" style="margin-left: 304px;">100</h2>
+        <h2 id="pts">Pts: 0</h2>
+        <h2 id="coins">Coins: 0</h2>
+        <div id="icon"></div><div id="icon-2"></div><h3 id="energy" style="position: absolute; margin-top: -17px; font-family: Comic Sans MS; margin-left: 25px;">3</h3>
+        <h3 class="attack" id="tackle">Tackle</h3>
+        <h3 class="attack" id="drain" style="margin-left: 70px;">Drain</h3>
+        <h3 class="attack" id="ground-pound" style="margin-left: 130px; font-size: 13px; width: 48px; height: 26px; margin-top: 19px; line-height: 13px; padding-left: 4px">Ground <br>Pound</h3>
+        <h3 class="attack" id="gaurd" style="margin-left: 194px;">Gaurd</h3>
+        <h3 class="attack" id="confuse" style="margin-left: 259px; font-size: 16px; height: 26px; margin-top: 19px;">confuse</h3>
+        <h6 class="pack" id="forty-hp" style="margin-left: 0px;">+40HP</h6><h6 id="packs-left">3</h6>
+        <h6 id="buy" style="margin-left: 0px;">Buy (10)</h6>
+        <h6 class="pack" id="zap" style="margin-top: -49px; margin-left: 65px;">Zap (D)</h6><h6 id="zaps-left">1</h6>
+        <h6 id="buy2" style="margin-left: 65px;">Buy (20)</h6>
+        <h6 class="pack" id="zap-h" style="margin-top: -49px; margin-left: 135px;">Zap (H)</h6><h6 id="zaps-left-h">1</h6>
+        <h6 id="buy3" style="margin-left: 136px;">Buy (20)</h6>
+        <h6 class="pack" id="e-pack" style="margin-top: -49px; margin-left: 205px;">Energy</h6><h6 id="e-left">1</h6>
+        <h6 id="buy4" style="margin-left: 206px;">Buy (20)</h6>
+        
+        <h6 class="pack" id="restore" style="margin-top: -49px; margin-left: 270px;">Restore</h6><h6 id="r-left">1</h6>
+        <h6 id="buy5" style="margin-left: 271px;">Buy (20)</h6>
+        <script>
+            var tackle = document.getElementById("tackle");
+            var drain = document.getElementById("drain");
+            var gPound = document.getElementById("ground-pound");
+            var gaurd = document.getElementById("gaurd");
+            var confuse = document.getElementById("confuse");
+            var gaurded = 0;
+            var sec = 0;
+            var eye = document.getElementById("eye");
+            var mouth = document.getElementById("mouth");
+            var body = document.getElementById("body");
+            var attack = 0;
+            var eHealth = 100;
+            var enemyHP = document.getElementById("enemy-hp");
+            var eye2 = document.getElementById("eye2");
+            var mouth2 = document.getElementById("mouth2");
+            var body2 = document.getElementById("body2");
+            var sec2 = 0;
+            var yHealth = 100;
+            var yourHP = document.getElementById("your-hp");
+            var points = 0;
+            var pts = document.getElementById("pts");
+            var fortyHP = document.getElementById("forty-hp");
+            var packsLeft = document.getElementById("packs-left");
+            var packsNumber = 3;
+            var coins = 0;
+            var buy = document.getElementById("buy");
+            var coinsNumber = document.getElementById("coins");
+            var zap = document.getElementById("zap");
+            var zapsLeft = document.getElementById("zaps-left");
+            var zapsNumber = 1;
+            var buy2 = document.getElementById("buy2");
+            var attackEffect = 0;
+            var zapH = document.getElementById("zap-h");
+            var zapsLeftH = document.getElementById("zaps-left-h");
+            var zapsNumberH = 1;
+            var buy3 = document.getElementById("buy3");
+            var energy = 3;
+            var energyEl = document.getElementById("energy");
+            var ePack = document.getElementById("e-pack");
+            var eLeft = document.getElementById("e-left");
+            var eLeftNumber = 1;
+            var buy4 = document.getElementById("buy4");
+            var restore = document.getElementById("restore");
+            var rLeft = document.getElementById("r-left");
+            var rLeftNumber = 1;
+            var buy5 = document.getElementById("buy5");
+            
+            var tackleAttack = function() {
+                if (attack === 0) {
+                    attack = 1;
+                    sec = 0;
+                    attackEffect = 1;
+                    attackAnimation();
+                    energy = energy + 1;
+                    energyEl.textContent = energy
+                }
+            }
+            var drainAttack = function() {
+                if (energy > 0) {
+                    if (attack === 0) {
+                        energy = energy - 1;
+                        energyEl.textContent = energy
+                        attack = 1;
+                        sec = 0;
+                        attackEffect = 2;
+                        attackAnimation();
+                    }
+                }
+            }
+            var gPoundAttack = function() {
+                if (energy > 2) {
+                    if (attack === 0) {
+                        energy = energy - 3;
+                        energyEl.textContent = energy
+                        attack = 1;
+                        sec = 0;
+                        attackEffect = 3;
+                        attackAnimation();
+                    }
+                }
+            }
+            var gaurdAttack = function() {
+                if (energy > 2) {
+                    if (attack === 0) {
+                        energy = energy - 3;
+                        energyEl.textContent = energy
+                        attack = 1;
+                        sec = 0;
+                        attackEffect = 4;
+                        attackAnimation();
+                    }
+                }
+            }
+            var confuseAttack = function() {
+                if (energy > 3) {
+                    if (attack === 0) {
+                        energy = energy - 4;
+                        energyEl.textContent = energy
+                        attack = 1;
+                        sec = 0;
+                        attackEffect = 5;
+                        attackAnimation();
+                    }
+                }
+            }
+            
+            var attackAnimation = function() {
+                wait = window.setInterval(move, 1);
+            }
+            var move = function() {
+                if (sec < 245) {
+                    sec = sec + 1;
+                    eye.style.left = sec + "px";
+                    mouth.style.left = sec + "px";
+                    body.style.left = sec + "px";
+                }
+                if (sec === 245) {
+                    window.clearInterval(wait);
+                    if (attackEffect === 1) {
+                        eHealth = eHealth - 20;
+                        enemyHP.textContent = eHealth
+                    }
+                    if (attackEffect === 2) {
+                        eHealth = eHealth - 10;
+                        enemyHP.textContent = eHealth
+                        yHealth = yHealth + 10;
+                        yourHP.textContent = yHealth
+                    }
+                    if (attackEffect === 3) {
+                        eHealth = eHealth - 50;
+                        enemyHP.textContent = eHealth
+                    }
+                    if (attackEffect === 4) {
+                        yHealth = yHealth + 10;
+                        yourHP.textContent = yHealth;
+                        gaurded = 1;
+                    }
+                    if (attackEffect === 5) {
+                        gaurded = 2;
+                    }
+                    reverse();
+                    if (eHealth < 1) {
+                        eHealth = 100;
+                        enemyHP.textContent = eHealth
+                        points = points + 1;
+                        pts.textContent = "Pts: " + points
+                        coins = coins + Math.floor(Math.random() * 4) + 9;
+                        coinsNumber.textContent = "Coins: " + coins;
+                    }
+                }
+            }
+            var rMove = function() {
+                if (sec > 0) {
+                    sec = sec - 1;
+                    eye.style.left = sec + "px";
+                    mouth.style.left = sec + "px";
+                    body.style.left = sec + "px";
+                }
+                if (sec === 0) {
+                    window.clearInterval(rWait);
+                    enemyAttack();
+                }
+            }
+            var reverse = function() {
+                rWait = window.setInterval(rMove, 1);
+            }
+            var enemyAttack = function() {
+                sec2 = 0;
+                wait2 = window.setInterval(move2, 1);
+            }
+            var move2 = function() {
+                if (sec2 > -245) {
+                    sec2 = sec2 - 1;
+                    eye2.style.left = sec2 + "px";
+                    mouth2.style.left = sec2 + "px";
+                    body2.style.left = sec2 + "px";
+                }
+                if (sec2 === -245) {
+                    window.clearInterval(wait2);
+                    if (gaurded === 2) {
+                        var eAttack = Math.floor(Math.random() * 4);
+                        if (eAttack === 1) {
+                            eHealth = eHealth - 10;
+                            enemyHP.textContent = eHealth
+                        } else if (eAttack === 2) {
+                            eHealth = eHealth - 20;
+                            enemyHP.textContent = eHealth
+                        } else {
+                            eHealth = eHealth - 30;
+                            enemyHP.textContent = eHealth
+                        }
+                    }
+                    if (gaurded === 0) {
+                        var eAttack = Math.floor(Math.random() * 4);
+                        if (eAttack === 1) {
+                            yHealth = yHealth - 10;
+                            yourHP.textContent = yHealth
+                        } else if (eAttack === 2) {
+                            yHealth = yHealth - 20;
+                            yourHP.textContent = yHealth
+                        } else {
+                            yHealth = yHealth - 30;
+                            yourHP.textContent = yHealth
+                        }
+                    }
+                    reverse2();
+                    gaurded = 0;
+                    if (yHealth < 1) {
+                        yHealth = 100;
+                        yourHP.textContent = yHealth
+                        points = 0;
+                        pts.textContent = "Pts: " + points;
+                        coins = 0;
+                        coinsNumber.textContent = "Coins: " + coins;
+                        packsNumber = 3;
+                        packsLeft.textContent = packsNumber;
+                        zapsNumber = 1;
+                        zapsLeft.textContent = zapsNumber;
+                        eHealth = 100;
+                        enemyHP.textContent = eHealth;
+                        energy = 3;
+                        energyEl.textContent = energy;
+                    }
+                }
+            }
+            var reverse2 = function() {
+                attack = 0;
+                rWait2 = window.setInterval(rMove2, 1);
+            }
+            var rMove2 = function() {
+                if (sec2 < 0) {
+                    sec2 = sec2 + 1;
+                    eye2.style.left = sec2 + "px";
+                    mouth2.style.left = sec2 + "px";
+                    body2.style.left = sec2 + "px";
+                }
+                else {
+                    window.clearInterval(rWait2);
+                    sec2 = 0;
+                }
+            }
+            
+            tackle.addEventListener("click", tackleAttack);
+            drain.addEventListener("click", drainAttack);
+            gPound.addEventListener("click", gPoundAttack);
+            gaurd.addEventListener("click", gaurdAttack);
+            confuse.addEventListener("click", confuseAttack);
+            
+            var heal = function() {
+                if (packsNumber > 0) {
+                    packsNumber = packsNumber - 1;
+                    packsLeft.textContent = packsNumber;
+                    yHealth = yHealth + 40;
+                    yourHP.textContent = yHealth
+                }
+            }
+            
+            fortyHP.addEventListener("click", heal);
+            
+            var useZapD = function() {
+                if (zapsNumber > 0) {
+                    zapsNumber = zapsNumber - 1;
+                    zapsLeft.textContent = zapsNumber;
+                    var hit1 = Math.floor(Math.random() * 3);
+                    var hit2 = Math.floor(Math.random() * 3);
+                    var hit3 = Math.floor(Math.random() * 3);
+                    if (hit1 === 1) {
+                        yHealth = yHealth - 20;
+                        yourHP.textContent = yHealth
+                        if (yHealth < 1) {
+                            yHealth = 100;
+                            yourHP.textContent = yHealth
+                            points = 0;
+                            pts.textContent = "Pts: " + points;
+                            coins = 0;
+                            coinsNumber.textContent = "Coins: " + coins;
+                            packsNumber = 3;
+                            packsLeft.textContent = packsNumber;
+                            zapsNumber = 1;
+                            zapsLeft.textContent = zapsNumber;
+                            eHealth = 100;
+                            enemyHP.textContent = eHealth
+                            energy = 3;
+                            energyEl.textContent = energy;
+                        }
+                    } else {
+                        eHealth = eHealth - 20;
+                        enemyHP.textContent = eHealth
+                        if (eHealth < 1) {
+                            eHealth = 100;
+                            enemyHP.textContent = eHealth
+                            points = points + 1;
+                            pts.textContent = "Pts: " + points
+                            coins = coins + Math.floor(Math.random() * 4) + 9;
+                            coinsNumber.textContent = "Coins: " + coins;
+                        }
+                    }
+                    if (hit2 === 1) {
+                        yHealth = yHealth - 20;
+                        yourHP.textContent = yHealth
+                        if (yHealth < 1) {
+                            yHealth = 100;
+                            yourHP.textContent = yHealth
+                            points = 0;
+                            pts.textContent = "Pts: " + points;
+                            coins = 0;
+                            coinsNumber.textContent = "Coins: " + coins;
+                            packsNumber = 3;
+                            packsLeft.textContent = packsNumber;
+                            zapsNumber = 1;
+                            zapsLeft.textContent = zapsNumber;
+                            eHealth = 100;
+                            enemyHP.textContent = eHealth
+                            energy = 3;
+                            energyEl.textContent = energy;
+                        }
+                    } else {
+                        eHealth = eHealth - 20;
+                        enemyHP.textContent = eHealth
+                        if (eHealth < 1) {
+                            eHealth = 100;
+                            enemyHP.textContent = eHealth
+                            points = points + 1;
+                            pts.textContent = "Pts: " + points
+                            coins = coins + Math.floor(Math.random() * 4) + 9;
+                            coinsNumber.textContent = "Coins: " + coins;
+                        }
+                    }
+                    if (hit3 === 1) {
+                        yHealth = yHealth - 20;
+                        yourHP.textContent = yHealth
+                        if (yHealth < 1) {
+                            yHealth = 100;
+                            yourHP.textContent = yHealth
+                            points = 0;
+                            pts.textContent = "Pts: " + points;
+                            coins = 0;
+                            coinsNumber.textContent = "Coins: " + coins;
+                            packsNumber = 3;
+                            packsLeft.textContent = packsNumber;
+                            zapsNumber = 1;
+                            zapsLeft.textContent = zapsNumber;
+                            eHealth = 100;
+                            enemyHP.textContent = eHealth
+                            energy = 3;
+                            energyEl.textContent = energy;
+                        }
+                    } else {
+                        eHealth = eHealth - 20;
+                        enemyHP.textContent = eHealth
+                        if (eHealth < 1) {
+                            eHealth = 100;
+                            enemyHP.textContent = eHealth
+                            points = points + 1;
+                            pts.textContent = "Pts: " + points
+                            coins = coins + Math.floor(Math.random() * 4) + 9;
+                            coinsNumber.textContent = "Coins: " + coins;
+                        }
+                    }
+                }
+            }
+            
+            zap.addEventListener("click", useZapD);
+            
+            var useZapH = function() {
+                if (zapsNumberH > 0) {
+                    zapsNumberH = zapsNumberH - 1;
+                    zapsLeftH.textContent = zapsNumberH;
+                    var hit1 = Math.floor(Math.random() * 3);
+                    var hit2 = Math.floor(Math.random() * 3);
+                    var hit3 = Math.floor(Math.random() * 3);
+                    if (hit1 === 1) {
+                        yHealth = yHealth + 20;
+                        yourHP.textContent = yHealth
+                    } else {
+                        eHealth = eHealth + 20;
+                        enemyHP.textContent = eHealth
+                    }
+                    if (hit2 === 1) {
+                        yHealth = yHealth + 20;
+                        yourHP.textContent = yHealth
+                    } else {
+                        eHealth = eHealth + 20;
+                        enemyHP.textContent = eHealth
+                    }
+                    if (hit3 === 1) {
+                        yHealth = yHealth + 20;
+                        yourHP.textContent = yHealth
+                    } else {
+                        eHealth = eHealth + 20;
+                        enemyHP.textContent = eHealth
+                    }
+                }
+            }
+            
+            zapH.addEventListener("click", useZapH);
+            
+            var useEnergyPack = function() {
+                if (eLeftNumber > 0) {
+                    eLeftNumber = eLeftNumber - 1;
+                    eLeft.textContent = eLeftNumber;
+                    energy = energy + 3;
+                    energyEl.textContent = energy
+                }
+            }
+            
+            ePack.addEventListener("click", useEnergyPack);
+            
+            var useRestore = function() {
+                if (rLeftNumber > 0) {
+                    rLeftNumber = rLeftNumber - 1;
+                    rLeft.textContent = rLeftNumber;
+                    if (yHealth < 100) {
+                        yHealth = 100;
+                        yourHP.textContent = yHealth;
+                    } else {
+                        yHealth = yHealth + 20;
+                        yourHP.textContent = yHealth;
+                    }
+                }
+            }
+            
+            restore.addEventListener("click", useRestore);
+            
+            var buyPack = function() {
+                if (coins > 9) {
+                    coins = coins - 10;
+                    coinsNumber.textContent = "Coins: " + coins;
+                    packsNumber = packsNumber + 1;
+                    packsLeft.textContent = packsNumber;
+                }
+            }
+            
+            buy.addEventListener("click", buyPack);
+            
+            var buyZap = function() {
+                if (coins > 19) {
+                    coins = coins - 20;
+                    coinsNumber.textContent = "Coins: " + coins;
+                    zapsNumber = zapsNumber + 1;
+                    zapsLeft.textContent = zapsNumber;
+                }
+            }
+            
+            buy2.addEventListener("click", buyZap);
+            
+            var buyZapH = function() {
+                if (coins > 19) {
+                    coins = coins - 20;
+                    coinsNumber.textContent = "Coins: " + coins;
+                    zapsNumberH = zapsNumberH + 1;
+                    zapsLeftH.textContent = zapsNumberH;
+                }
+            }
+            
+            buy3.addEventListener("click", buyZapH);
+            
+            var buyEnergyPack = function() {
+                if (coins > 19) {
+                    coins = coins - 20;
+                    coinsNumber.textContent = "Coins: " + coins;
+                    eLeftNumber = eLeftNumber + 1;
+                    eLeft.textContent = eLeftNumber;
+                }
+            }
+            
+            buy4.addEventListener("click", buyEnergyPack);
+            
+            var buyRestore = function() {
+                if (coins > 19) {
+                    coins = coins - 20;
+                    coinsNumber.textContent = "Coins: " + coins;
+                    rLeftNumber = rLeftNumber + 1;
+                    rLeft.textContent = rLeftNumber;
+                }
+            }
+            
+            buy5.addEventListener("click", buyRestore);
+            
+        </script>
+    </body>
+</html>
